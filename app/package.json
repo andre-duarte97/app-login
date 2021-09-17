@@ -6,12 +6,7 @@
     "start": "NODE_ENV=development vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "clean-dist": "rm -rf ./dist && mkdir -p dist",
-    "build:dev": "npm run clean-dist && vue-cli-service build --mode development",
-    "build:review": "npm run clean-dist && vue-cli-service build --mode review",
-    "build:prod": "npm run clean-dist && vue-cli-service build --mode production",
-    "deploy:dev": "NODE_ENV=dev fly dev --flightplan ./config/deploy.js",
-    "deploy:review": "npm run build:review && NODE_ENV=review fly review --flightplan ./config/deploy.js",
-    "deploy": "npm run build:prod && NODE_ENV=prod fly prod --flightplan ./config/deploy.js"
+    "build:dev": "npm run clean-dist && vue-cli-service build --mode development"
   },
   "dependencies": {
     "axios": "^0.21.4",
