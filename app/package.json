@@ -1,0 +1,71 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=development vue-cli-service serve",
+    "lint": "vue-cli-service lint",
+    "clean-dist": "rm -rf ./dist && mkdir -p dist",
+    "build:dev": "npm run clean-dist && vue-cli-service build --mode development",
+    "build:review": "npm run clean-dist && vue-cli-service build --mode review",
+    "build:prod": "npm run clean-dist && vue-cli-service build --mode production",
+    "deploy:dev": "NODE_ENV=dev fly dev --flightplan ./config/deploy.js",
+    "deploy:review": "npm run build:review && NODE_ENV=review fly review --flightplan ./config/deploy.js",
+    "deploy": "npm run build:prod && NODE_ENV=prod fly prod --flightplan ./config/deploy.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "bootstrap": "^3.4.1",
+    "core-js": "^3.3.2",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "numeral": "^2.0.6",
+    "sweetalert": "^2.1.2",
+    "vue": "^2.6.10",
+    "vue-recaptcha": "^1.1.1",
+    "vue-router": "^3.3.4",
+    "vuelidate": "^0.7.5",
+    "webpack-merge": "^5.0.9"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-service": "^4.5.13",
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^7.0.2",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "flightplan": "^0.6.20",
+    "flightplan-sshconf": "^0.1.0",
+    "vue-template-compiler": "2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-console": "off"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  }
+}
